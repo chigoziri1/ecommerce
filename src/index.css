@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.flexRow {
+	@apply flex  items-center
+}
+
+.info{
+	@apply  font-bold
+}
+
+.icon{
+	@apply text-white text-lg cursor-pointer
+}
+
+.menuicon {
+	@apply  border 
+}
