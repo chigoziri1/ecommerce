@@ -11,6 +11,7 @@ import Men from './pages/Men.jsx'
 import Women from './pages/Women.jsx'
 import { ProductProvider } from './context/ProductProvider.jsx'
 import SingleProducts from './pages/SingleProducts.jsx'
+import Checkout from './pages/Checkout.jsx'
 
 const router = createBrowserRouter([{
 	element: <App />,
@@ -42,8 +43,12 @@ const router = createBrowserRouter([{
 		},
 		{
 			element: <SingleProducts/>,
-			path: "singleProduct/:id"
+			path: 'singleProduct/:id'
 		},
+		{
+			element: <Checkout/>,
+			path: "checkout"
+		}
 	]
 }])
 

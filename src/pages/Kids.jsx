@@ -18,8 +18,9 @@ function Kids() {
 	}, [Products])
 	return (
 		<Layout>
-			<div className='bg-gray-100 min-h-screen'>
-				<p className="text-black font-semibold text-lg text-center">Kids</p>
+			<div className='bg-gray-100 min-h-screen text-center text-white p-4'>
+				<p className="text-black font-semibold mb-3">ALL</p>
+
 				<ProductItems Products={KidsProduct}/>
 			</div>
 		</Layout>

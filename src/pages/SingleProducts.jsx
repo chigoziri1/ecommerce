@@ -6,7 +6,7 @@ import ProductContext from "../context/ProductProvider";
 
 function SingleProducts() {
 const { id } = useParams();
-const { Products} = useContext(ProductContext);
+const { Products, AddTOCart} = useContext(ProductContext);
 
 const [singleProduct, setSingleProduct] = useState(null);
 const [defaultSize, setDefaultSize] = useState(null);
@@ -208,7 +208,7 @@ if (!singleProduct) {
 		<button
 		type="button"
 		disabled={sizes.length > 0 && !defaultSize}
-		onClick={handleAddToCart}
+		onClick={()=>AddTOCart(singleProduct, quantity, defaultSize)}
 		className="mt-8 w-full rounded-xl bg-black px-6 py-4 text-sm font-semibold text-white transition hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300 disabled:cursor-not-allowed disabled:bg-gray-300"
 		>
 		Add to Cart

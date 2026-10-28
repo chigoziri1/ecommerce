@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaCartShopping, FaUser } from "react-icons/fa6";
 import { MdMenu } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
+import ProductContext from "../context/ProductProvider";
 
 
 function Navbar() {
 	const [showmenu, setshowmenu] = useState(false)
+	const {cartCount} = useContext(ProductContext)
 	const navs = [
 		{
 			name: "About" ,
@@ -29,7 +31,7 @@ function Navbar() {
 		}
 	];
 	return (
-		<>
+		<div className="sticky top-0 left-0 z-50">
 			{/* big */}
 			<div className="hidden lg:block">
 				<div className="h-28 flexRow w-full justify-between p-2 bg-black mr-10">
@@ -54,14 +56,14 @@ function Navbar() {
 					
 				</div>
 		
-					<div className="flexRow gap-5">
+					<div className="flexRow gap-5 justify-center">
 						<span className="icon">
 							<FaUser/>
 						</span>
-						<span className="icon relative">
+						<Link to={"/checkout"} className="icon relative">
 							<FaCartShopping/>
-							<span classname="absolute">0</span>
-						</span>
+							<span className="text-lg font-bold absolute top-[-21px] left-3 ">{cartCount}</span>
+						</Link>
 						{/* <span>
 							<FaHeart/>
 						</span> */}
@@ -69,6 +71,7 @@ function Navbar() {
 				</div>
 			</div>
 			
+			{/* small */}
 			<div className="lg:hidden flexRow justify-between bg-black p-2 relative">
 				<Link 
 					to={"/"}
@@ -76,13 +79,21 @@ function Navbar() {
 						Smart
 				</Link> 
 
-				<span 
+				<div className="flexRow justify-between gap-5">
+						<Link to={"/checkout"} className="icon relative">
+							<FaCartShopping/>
+							<span className="text-lg font-bold absolute top-[-21px] left-3 ">{cartCount}</span>
+						</Link>
+
+					<span 
 					onClick={()=> setshowmenu((prv) => !prv)}
 					className="icon block lg:hidden"
-				>
-					<MdMenu className="h-10 w-10"/>
-				</span>
+					>
+						<MdMenu className="h-10 w-10"/>
+					</span>
+				</div>
 
+				
 				<div className={` ${showmenu ? "" : "hidden"} list menuicon flex flex-col justify-between gap-8 absolute top-[100%] left-0 w-[30%] z-50 px-2 py-6 bg-black items-center `}>
 					{navs.map((item, i) => (
 						<NavLink
@@ -99,7 +110,7 @@ function Navbar() {
 				</div>
 
 			</div>
-		</>
+		</div>
 		
 	)
 }
